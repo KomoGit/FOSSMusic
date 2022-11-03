@@ -21,3 +21,4 @@ doc/api/
 *.js.map
 .vscode/settings.json
 .gitignore
+fossmusic/.vscode/settings.json
