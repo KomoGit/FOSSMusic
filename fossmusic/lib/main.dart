@@ -4,11 +4,6 @@ import 'package:flutter_exoplayer/audioplayer.dart';
 
 void main() {
   AudioPlayer.logEnabled = true;
-  runApp(
-    const MaterialApp(
-      title: 'Flutter Tutorial',
-      home: Home(),
-    ),
-  );
+  runApp(const Home());
 }
 
