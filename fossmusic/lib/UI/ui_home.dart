@@ -35,8 +35,8 @@ class _RootPageState extends State<RootPage> {
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.amber,
         destinations: [
-        NavigationDestination(icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white:Colors.grey,), label: "Home"),
-        NavigationDestination(icon: Icon(Icons.settings,color:  currentIndex == 1 ? Colors.white:Colors.grey,), label: "Settings"),
+        NavigationDestination(icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white:const Color.fromARGB(255, 214, 213, 213),), label: "Home"),
+        NavigationDestination(icon: Icon(Icons.settings,color:  currentIndex == 1 ? Colors.white:const Color.fromARGB(255, 214, 213, 213),), label: "Settings"),
       ],
       onDestinationSelected: (int index) {
           setState(() {
@@ -45,6 +45,12 @@ class _RootPageState extends State<RootPage> {
         },
         selectedIndex: currentIndex,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          debugPrint("Add Button");//REMOVE ME
+        },
+        child: const Icon(Icons.add,color: Colors.white),
+        ),
     );
   }
 }
