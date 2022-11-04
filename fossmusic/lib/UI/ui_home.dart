@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_exoplayer/audioplayer.dart';
+//import 'package:flutter_exoplayer/audioplayer.dart';
 
 String url = "";
-AudioPlayer _audioPlayer = AudioPlayer();
+//AudioPlayer _audioPlayer = AudioPlayer();
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.amber),
+      theme: ThemeData(primarySwatch: Colors.amber ),
       home: const RootPage(),
     );
   }
@@ -32,13 +32,15 @@ class _RootPageState extends State<RootPage> {
       appBar: AppBar(
         title: const Center(child: Text("FOSS Player")),
       ),
-      bottomNavigationBar: NavigationBar(destinations: const [
-        NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-        NavigationDestination(icon: Icon(Icons.settings), label: "Settings"),
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.amber,
+        destinations: [
+        NavigationDestination(icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white:Colors.grey,), label: "Home"),
+        NavigationDestination(icon: Icon(Icons.settings,color:  currentIndex == 1 ? Colors.white:Colors.grey,), label: "Settings"),
       ],
       onDestinationSelected: (int index) {
           setState(() {
-            currentIndex = index;
+            currentIndex = index; 
           });
         },
         selectedIndex: currentIndex,
