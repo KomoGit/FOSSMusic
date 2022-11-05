@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fossmusic/UI/ui_tindercard.dart';
 //import 'package:flutter_exoplayer/audioplayer.dart';
 
 String url = "";
@@ -11,7 +12,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.amber ),
+      theme: ThemeData(primarySwatch: Colors.amber),
       home: const RootPage(),
     );
   }
@@ -32,25 +33,38 @@ class _RootPageState extends State<RootPage> {
       appBar: AppBar(
         title: const Center(child: Text("FOSS Player")),
       ),
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.amber,
-        destinations: [
-        NavigationDestination(icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white:const Color.fromARGB(255, 214, 213, 213),), label: "Home"),
-        NavigationDestination(icon: Icon(Icons.settings,color:  currentIndex == 1 ? Colors.white:const Color.fromARGB(255, 214, 213, 213),), label: "Settings"),
-      ],
-      onDestinationSelected: (int index) {
-          setState(() {
-            currentIndex = index; 
-          });
-        },
-        selectedIndex: currentIndex,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          debugPrint("Add Button");//REMOVE ME
-        },
-        child: const Icon(Icons.add,color: Colors.white),
+      body: const Center(child: TinderCard(),),
+      //backgroundColor: Colors.orange, //Colors needs to be added to stack
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black54,
+                blurRadius: 15.0,
+                offset: Offset(0.0, 0.85))
+          ],
         ),
+        child: NavigationBar(
+          backgroundColor: Colors.amber,
+          destinations: [
+            NavigationDestination(
+                icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),),
+                label: "Home"),//Back to home
+            NavigationDestination(
+                icon: Icon(Icons.add_circle,color: currentIndex == 1 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),),
+                label: "Add"),//Open a pop-up to add a new song.
+            NavigationDestination(
+              icon: Icon(Icons.settings,color: currentIndex == 2 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),),
+              label: "Settings"),//Go to a entirely new page.
+          ],
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          selectedIndex: currentIndex,
+        ),
+      ),
     );
   }
 }
