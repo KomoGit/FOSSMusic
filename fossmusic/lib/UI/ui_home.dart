@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fossmusic/UI/ui_tindercard.dart';
 //import 'package:flutter_exoplayer/audioplayer.dart';
 
@@ -10,9 +11,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.amber),
+      theme: ThemeData(primarySwatch: Colors.yellow),
       home: const RootPage(),
     );
   }
@@ -31,10 +36,9 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("FOSS Player")),
+        title: const Center(child: Text("FOSSPlayer")),
       ),
       body: const Center(child: TinderCard(),),
-      //backgroundColor: Colors.orange, //Colors needs to be added to stack
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           boxShadow: <BoxShadow>[
@@ -55,7 +59,7 @@ class _RootPageState extends State<RootPage> {
                 label: "Add"),//Open a pop-up to add a new song.
             NavigationDestination(
               icon: Icon(Icons.settings,color: currentIndex == 2 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),),
-              label: "Settings"),//Go to a entirely new page.
+              label: "Settings"),//Go to a entirely new page. 
           ],
           onDestinationSelected: (int index) {
             setState(() {
