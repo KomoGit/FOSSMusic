@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 
 
-final controller = SwipableStackController();
+// static final controller = SwipableStackController();
 //With each change to code base, the card stack becomes unresponsive during debugging. Decouple UI from main thread.
 
 class TinderCard extends StatelessWidget {
+  static final controller = SwipableStackController();
   const TinderCard({super.key});
   @override
   Widget build(BuildContext context) {
