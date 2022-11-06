@@ -22,3 +22,4 @@ doc/api/
 .vscode/settings.json
 .gitignore
 fossmusic/.vscode/settings.json
+*.jpg
