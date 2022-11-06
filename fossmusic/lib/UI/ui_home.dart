@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fossmusic/UI/ui_controller_overlay.dart';
 import 'package:fossmusic/UI/ui_tindercard.dart';
 //import 'package:flutter_exoplayer/audioplayer.dart';
 
@@ -35,10 +36,13 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         title: const Center(child: Text("FOSSPlayer")),
       ),
+      backgroundColor: Colors.yellow,
       body: const Center(child: TinderCard(),),
+      floatingActionButton: const OverlayController(),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           boxShadow: <BoxShadow>[
@@ -49,7 +53,7 @@ class _RootPageState extends State<RootPage> {
           ],
         ),
         child: NavigationBar(
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.orange,
           destinations: [
             NavigationDestination(
                 icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),),
