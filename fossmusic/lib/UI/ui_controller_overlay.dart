@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fossmusic/UI/ui_tindercard.dart';
+import 'package:swipable_stack/swipable_stack.dart';
+
+bool? pausePressed;
+//final controller = SwipableStackController();
 
 class OverlayController extends StatelessWidget {
   const OverlayController({super.key});
@@ -9,31 +14,34 @@ class OverlayController extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              TinderCard.controller.next(swipeDirection: SwipeDirection.left,duration: const Duration(milliseconds: 750));
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange,
               minimumSize: const Size(60,60),
               shape: const CircleBorder()),
             child: const Icon(Icons.skip_previous,color: Colors.white,)),
-            //const SizedBox(width: 25),
             ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              pausePressed = true;
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange,
               minimumSize: const Size(60,60),
               shape: const CircleBorder()),
             child: const Icon(Icons.play_arrow,color: Colors.white,)),
-            //const SizedBox(width: 25),
             ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange,
               minimumSize: const Size(60,60),
               shape: const CircleBorder()),
-            child: const Icon(Icons.shuffle,color: Colors.white,)),
-           // const SizedBox(width: 25),
+            child: const Icon(Icons.shuffle,color: Colors.white,)),     
             ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+             TinderCard.controller.next(swipeDirection: SwipeDirection.right,duration: const Duration(milliseconds: 750));
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.orange,
               minimumSize: const Size(60,60),
