@@ -23,3 +23,4 @@ doc/api/
 .gitignore
 fossmusic/.vscode/settings.json
 *.jpg
+fossmusic/assets/FInternalDB
