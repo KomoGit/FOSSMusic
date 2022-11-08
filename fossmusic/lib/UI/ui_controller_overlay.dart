@@ -19,7 +19,7 @@ class OverlayController extends StatelessWidget {
               TinderCard.controller.next(swipeDirection: SwipeDirection.left,duration: const Duration(milliseconds: 750));
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
+              backgroundColor: Colors.transparent,
               minimumSize: const Size(60,60),
               shape: const CircleBorder()),
             child: const Icon(Icons.skip_previous,color: Colors.white,)),
@@ -29,14 +29,14 @@ class OverlayController extends StatelessWidget {
               //insertTestData();
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
+              backgroundColor: Colors.transparent,
               minimumSize: const Size(60,60),
               shape: const CircleBorder()),
             child: const Icon(Icons.play_arrow,color: Colors.white,)),
             ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
+              backgroundColor: Colors.transparent,
               minimumSize: const Size(60,60),
               shape: const CircleBorder()),
             child: const Icon(Icons.shuffle,color: Colors.white,)),     
@@ -45,7 +45,7 @@ class OverlayController extends StatelessWidget {
              TinderCard.controller.next(swipeDirection: SwipeDirection.right,duration: const Duration(milliseconds: 750));
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
+              backgroundColor: Colors.transparent,
               minimumSize: const Size(60,60),
               shape: const CircleBorder()),
             child: const Icon(Icons.skip_next,color: Colors.white,)),
