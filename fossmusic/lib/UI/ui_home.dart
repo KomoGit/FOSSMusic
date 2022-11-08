@@ -57,14 +57,14 @@ class _RootPageState extends State<RootPage> {
           backgroundColor: Colors.orange,
           destinations: [
             NavigationDestination(
-                icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),),
-                label: "Home"),//Back to home
+                icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
+                label: ""),//Back to home
+            FloatingActionButton(onPressed:() {
+              
+            },elevation: 0,backgroundColor: Colors.transparent,child: const Icon(Icons.add,color: Colors.white,size: 30,),),
             NavigationDestination(
-                icon: Icon(Icons.add_circle,color: currentIndex == 1 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),),
-                label: "Add"),//Open a pop-up to add a new song.
-            NavigationDestination(
-              icon: Icon(Icons.settings,color: currentIndex == 2 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),),
-              label: "Settings"),//Go to a entirely new page. 
+              icon: Icon(Icons.settings,color: currentIndex == 2 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
+              label: ""),//Go to a entirely new page. 
           ],
           onDestinationSelected: (int index) {
             setState(() {
