@@ -26,7 +26,6 @@ class OverlayController extends StatelessWidget {
             ElevatedButton(
             onPressed: () {
               pausePressed = true;
-              //insertTestData();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,

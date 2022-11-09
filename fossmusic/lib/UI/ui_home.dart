@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fossmusic/UI/ui_controller_overlay.dart';
+import 'package:fossmusic/UI/ui_playlist.dart';
 import 'package:fossmusic/UI/ui_tindercard.dart';
 //import 'package:flutter_exoplayer/audioplayer.dart';
 
@@ -43,6 +44,7 @@ class _RootPageState extends State<RootPage> {
       ),
       backgroundColor: Colors.yellow,
       body: const Center(child: TinderCard(),),
+      drawer: const PlayListView(),
       floatingActionButton: const OverlayController(),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -55,12 +57,13 @@ class _RootPageState extends State<RootPage> {
         ),
         child: NavigationBar(
           backgroundColor: Colors.orange,
-          destinations: [
+          destinations: 
+          [
             NavigationDestination(
                 icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
                 label: ""),//Back to home
             FloatingActionButton(onPressed:() {
-              
+              debugPrint("Add button pressed");
             },elevation: 0,backgroundColor: Colors.transparent,child: const Icon(Icons.add,color: Colors.white,size: 30,),),
             NavigationDestination(
               icon: Icon(Icons.settings,color: currentIndex == 2 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
