@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fossmusic/DB/db_controller.dart';
+import 'package:fossmusic/DB/models/model_song.dart';
 
 class PlayListView extends StatefulWidget {
   const PlayListView({super.key});
@@ -10,7 +12,32 @@ class PlayListView extends StatefulWidget {
 class _PlayListViewState extends State<PlayListView> {
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
+    return  Scaffold(
+      body: Center(
+          child: FutureBuilder<List<Song>>(
+              future: DatabaseHelper.instance.getSongs(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<Song>> snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(child: Text('Loading...'));
+                }
+                return snapshot.data!.isEmpty ? const Center(child: Text("No songs added to the playlist."),)
+                : ListView(
+                  children: snapshot.data!.map((song) {
+                    return Center(
+                      child: ListTile(
+                        title: Text(song.link),//Should be combo of two strings, Singer - Song name
+                        onLongPress: (){
+                          setState(() {
+                            DatabaseHelper.instance.remove(song.id!);
+                          });
+                        },
+                      ),
+                    );
+                  }).toList(),
+                );
+              }),
+        ), 
       backgroundColor: Colors.yellow,
     );
   }
