@@ -4,7 +4,7 @@ import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-//CREDIT : https://www.youtube.com/watch?v=noi6aYsP7Go&list=WL&index=2
+//CREDIT : https://www.youtube.com/watch?v=noi6aYsP7Go&list=WL&index=2 
 class DatabaseHelper {
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
