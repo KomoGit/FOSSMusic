@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fossmusic/DB/db_controller.dart';
+import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:fossmusic/UI/ui_controller_overlay.dart';
+import 'package:fossmusic/UI/ui_input.dart';
 import 'package:fossmusic/UI/ui_playlist.dart';
 import 'package:fossmusic/UI/ui_tindercard.dart';
 //import 'package:flutter_exoplayer/audioplayer.dart';
@@ -62,9 +65,17 @@ class _RootPageState extends State<RootPage> {
             NavigationDestination(
                 icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
                 label: ""),//Back to home
+            //When pressed a pop up should open to take user input.
             FloatingActionButton(onPressed:() {
-              debugPrint("Add button pressed");
-            },elevation: 0,backgroundColor: Colors.transparent,child: const Icon(Icons.add,color: Colors.white,size: 30,),),
+              const UserInputPopUp();
+            },
+            elevation: 0,backgroundColor: Colors.transparent,child: const Icon(Icons.add,color: Colors.white,size: 30,),),
+            // FloatingActionButton(onPressed:() async {
+            //   await DatabaseHelper.instance.add(
+            //     Song(link: "test")
+            //   );
+            //   debugPrint(DatabaseHelper.instance.getSongs().toString());
+            // },elevation: 0,backgroundColor: Colors.transparent,child: const Icon(Icons.add,color: Colors.white,size: 30,),),
             NavigationDestination(
               icon: Icon(Icons.settings,color: currentIndex == 2 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
               label: ""),//Go to a entirely new page. 
