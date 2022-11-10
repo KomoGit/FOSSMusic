@@ -1,7 +1,18 @@
+// ignore: depend_on_referenced_packages
+//import 'package:uuid/uuid.dart';
+
+//var uuid = const Uuid();
+/*
+The song model should take user input for album,
+artist, release date, etc. Some of the data should be 
+optional so not to annoy the user.
+*/
+
+
 class Song{
+  //final String uuid;
   final int? id;
   final String link;
-
   Song({this.id,required this.link});
   factory Song.fromMap(Map<String,dynamic> json) => Song(
     id: json["id"],
