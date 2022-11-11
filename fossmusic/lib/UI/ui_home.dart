@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fossmusic/DB/db_controller.dart';
-import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:fossmusic/UI/ui_controller_overlay.dart';
 import 'package:fossmusic/UI/ui_input.dart';
 import 'package:fossmusic/UI/ui_playlist.dart';
@@ -41,6 +39,7 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         title: const Center(child: Text("FOSSPlayer")),
@@ -67,15 +66,9 @@ class _RootPageState extends State<RootPage> {
                 label: ""),//Back to home
             //When pressed a pop up should open to take user input.
             FloatingActionButton(onPressed:() {
-              const UserInputPopUp();
+              showDialog(context: context, builder: (BuildContext context) => const UserInputPopUp());
             },
             elevation: 0,backgroundColor: Colors.transparent,child: const Icon(Icons.add,color: Colors.white,size: 30,),),
-            // FloatingActionButton(onPressed:() async {
-            //   await DatabaseHelper.instance.add(
-            //     Song(link: "test")
-            //   );
-            //   debugPrint(DatabaseHelper.instance.getSongs().toString());
-            // },elevation: 0,backgroundColor: Colors.transparent,child: const Icon(Icons.add,color: Colors.white,size: 30,),),
             NavigationDestination(
               icon: Icon(Icons.settings,color: currentIndex == 2 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
               label: ""),//Go to a entirely new page. 
