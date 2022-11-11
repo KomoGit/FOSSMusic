@@ -22,6 +22,7 @@ class _PlayListViewState extends State<PlayListView> {
                   return const Center(child: Text('Loading...'));
                 }
                 return snapshot.data!.isEmpty ? const Center(child: Text("No songs added to the playlist."),)
+                // Add padding to each of the items. And a visible border.
                 : ListView(
                   children: snapshot.data!.map((song) {
                     return Center(
