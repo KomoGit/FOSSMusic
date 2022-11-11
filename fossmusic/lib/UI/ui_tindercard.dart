@@ -11,6 +11,7 @@ class TinderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       body: SwipableStack(builder: (context,index){
           return Image.asset("assets/WallpaperDog-20521639.jpg"); //REMOVE ME
