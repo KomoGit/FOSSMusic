@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fossmusic/UI/ui_tindercard.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 
-bool? pausePressed;
-
 class OverlayController extends StatelessWidget {
   const OverlayController({super.key});
 
@@ -23,7 +21,7 @@ class OverlayController extends StatelessWidget {
             child: const Icon(Icons.skip_previous,color: Colors.white,)),
             ElevatedButton(
             onPressed: () {
-              pausePressed = true;
+              //pausePressed = true;
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
