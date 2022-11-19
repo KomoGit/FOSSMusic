@@ -4,21 +4,14 @@ import 'package:fossmusic/UI/ui_controller_overlay.dart';
 import 'package:fossmusic/UI/ui_input.dart';
 import 'package:fossmusic/UI/ui_playlist.dart';
 import 'package:fossmusic/UI/ui_tindercard.dart';
-//import 'package:flutter_exoplayer/audioplayer.dart';
-
-String url = "";
-//bool? showOverlay = true;
-//AudioPlayer _audioPlayer = AudioPlayer();
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown
-    ]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.yellow),
@@ -45,7 +38,9 @@ class _RootPageState extends State<RootPage> {
         title: const Center(child: Text("FOSSPlayer")),
       ),
       backgroundColor: Colors.yellow,
-      body: const Center(child: TinderCard(),),
+      body: const Center(
+        child: TinderCard(),
+      ),
       drawer: const PlayListView(),
       floatingActionButton: const OverlayController(),
       bottomNavigationBar: Container(
@@ -59,19 +54,35 @@ class _RootPageState extends State<RootPage> {
         ),
         child: NavigationBar(
           backgroundColor: Colors.orange,
-          destinations: 
-          [
+          destinations: [
             NavigationDestination(
-                icon: Icon(Icons.home,color: currentIndex == 0 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
-                label: ""),//Back to home
-            //When pressed a pop up should open to take user input.
-            FloatingActionButton(onPressed:() {
-              showDialog(context: context, builder: (BuildContext context) => const UserInputPopUp());
-            },
-            elevation: 0,backgroundColor: Colors.transparent,child: const Icon(Icons.add,color: Colors.white,size: 30,),),
+                icon: Icon(Icons.home,
+                    color: currentIndex == 0
+                        ? Colors.white
+                        : const Color.fromARGB(255, 214, 213, 213),
+                    size: 30),
+                label: ""), //Back to home
+            FloatingActionButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => const UserInputPopUp());
+              },
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 30,
+              ),
+            ),
             NavigationDestination(
-              icon: Icon(Icons.settings,color: currentIndex == 2 ? Colors.white : const Color.fromARGB(255, 214, 213, 213),size: 30),
-              label: ""),//Go to a entirely new page. 
+                icon: Icon(Icons.settings,
+                    color: currentIndex == 2
+                        ? Colors.white
+                        : const Color.fromARGB(255, 214, 213, 213),
+                    size: 30),
+                label: ""), //Go to a entirely new page.
           ],
           onDestinationSelected: (int index) {
             setState(() {
