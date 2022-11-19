@@ -23,7 +23,7 @@ class UserInputPopUp extends StatelessWidget {
                 )),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(8.0),
             child: Builder(
               builder: (context) {
                 return ElevatedButton(
