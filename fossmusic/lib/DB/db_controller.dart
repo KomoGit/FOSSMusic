@@ -4,7 +4,8 @@ import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-//CREDIT : https://www.youtube.com/watch?v=noi6aYsP7Go&list=WL&index=2 
+
+//CREDIT : https://www.youtube.com/watch?v=noi6aYsP7Go&list=WL&index=2
 class DatabaseHelper {
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -24,7 +25,7 @@ class DatabaseHelper {
 
   Future _onCreate(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE songs (id INTEGER PRIMARY KEY,uuid TEXT,link TEXT)');
+        'CREATE TABLE songs (id INTEGER PRIMARY KEY,link TEXT,songName TEXT,artistName TEXT,albumName TEXT)'); //Ensure rest of the data is here
   }
 
   //C.R.U.D
@@ -34,6 +35,7 @@ class DatabaseHelper {
     Database db = await instance._database;
     return await db.insert('songs', song.toMap());
   }
+
   //READ
   Future<List<Song>> getSongs() async {
     Database db = await instance._database;
@@ -42,14 +44,16 @@ class DatabaseHelper {
         songs.isNotEmpty ? songs.map((e) => Song.fromMap(e)).toList() : [];
     return songList;
   }
+
   //UPDATE (NOT IMPLEMENTED YET)
   Future<int> update(Song song) async {
     Database db = await instance._database;
-    return await db.update('groceries', song.toMap(),
-        where: "id = ?", whereArgs: [song.id]);
+    return await db
+        .update('songs', song.toMap(), where: "id = ?", whereArgs: [song.id]);
   }
+
   //DELETE
-    Future<int> remove(int id) async {
+  Future<int> remove(int id) async {
     Database db = await instance._database;
     return await db.delete('songs', where: 'id = ?', whereArgs: [id]);
   }
