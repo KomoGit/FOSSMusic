@@ -7,20 +7,66 @@ class UserInputPopUp extends StatelessWidget {
 //DOESNT WORK
   @override
   Widget build(BuildContext context) {
+    //TextEditingController nameController = TextEditingController();
+    //List<TextEditingController> nameController = [];
     TextEditingController nameController = TextEditingController();
-    return AlertDialog(
-      title: const Text('Add song to playlist'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+    TextEditingController linkController = TextEditingController();
+    TextEditingController albumController = TextEditingController();
+    TextEditingController artistController = TextEditingController();
+
+    return Scaffold(
+      appBar: AppBar(title: const Text("Add New Song")),
+      backgroundColor: Colors.yellow,
+      body: Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
                 onChanged: (v) => nameController.text = v,
                 decoration: const InputDecoration(
-                  labelText: 'Insert Link',
-                )),
+                  contentPadding: EdgeInsets.all(10),
+                  labelText: "Insert Song Name",
+                ),
+              ),
+            ),
+          ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                onChanged: (v) => artistController.text = v,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  labelText: "Insert Artist Name",
+                ),
+              ),
+            ),
+          ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                onChanged: (v) => albumController.text = v,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  labelText: "Insert Album Name",
+                ),
+              ),
+            ),
+          ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                onChanged: (v) => linkController.text = v,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  labelText: "Insert Link",
+                ),
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -28,7 +74,12 @@ class UserInputPopUp extends StatelessWidget {
               builder: (context) {
                 return ElevatedButton(
                   onPressed: () async {
-                    await DatabaseHelper.instance.add(Song(link: nameController.text));
+                    await DatabaseHelper.instance.add(Song(
+                      songName: nameController.text,
+                      artistName: artistController.text,
+                      link: linkController.text,
+                      albumName: albumController.text,
+                    ));
                   },
                   child: const Text('Submit'),
                 );
