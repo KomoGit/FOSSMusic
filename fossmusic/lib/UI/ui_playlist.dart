@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fossmusic/DB/db_controller.dart';
 import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:fossmusic/LOGIC/logic_player.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class PlayListView extends StatefulWidget {
   const PlayListView({super.key});
@@ -20,7 +21,11 @@ class _PlayListViewState extends State<PlayListView> {
             builder:
                 (BuildContext context, AsyncSnapshot<List<Song>> snapshot) {
               if (!snapshot.hasData) {
-                return const Center(child: Text('Loading...'));
+                return Center(
+                  child: LoadingAnimationWidget.staggeredDotsWave(
+                      color: Colors.white, size: 60),
+                );
+                //return const Center(child: Text('Loading...'));
               }
               return snapshot.data!.isEmpty
                   ? const Center(
@@ -31,8 +36,7 @@ class _PlayListViewState extends State<PlayListView> {
                       children: snapshot.data!.map((song) {
                         return Center(
                           child: ListTile(
-                            title: Text(song
-                                .link), //Should be combo of two strings, Singer - Song name
+                            title: Text("${song.artistName}-${song.songName}"),
                             onLongPress: () {
                               setState(() {
                                 DatabaseHelper.instance.remove(song.id!);
