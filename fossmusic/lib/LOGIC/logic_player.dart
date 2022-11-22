@@ -1,11 +1,13 @@
-import 'package:flutter_exoplayer/audioplayer.dart';
+//AudioPlayer audioPlayer = AudioPlayer();
 
-AudioPlayer audioPlayer = AudioPlayer();
+import 'package:assets_audio_player/assets_audio_player.dart';
 
 void playSong(String url) {
-  audioPlayer.play(url);
+  Audio.network(url);
+  //audioPlayer.play(url);
 }
 
 void pauseSong() {
-  audioPlayer.pause();
+  //Audio
+  // audioPlayer.pause();
 }
