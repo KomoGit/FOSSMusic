@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:fossmusic/DB/db_controller.dart';
 import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:fossmusic/LOGIC/logic_player.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class PlayListView extends StatefulWidget {
   const PlayListView({super.key});
@@ -28,8 +31,18 @@ class _PlayListViewState extends State<PlayListView> {
                 //return const Center(child: Text('Loading...'));
               }
               return snapshot.data!.isEmpty
-                  ? const Center(
-                      child: Text("No songs added to the playlist."),
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Lottie.network(
+                              "https://assets4.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"),
+                          const Text(
+                            "Your playlist is completely empty.",
+                            style: TextStyle(color: Colors.black),
+                          )
+                        ],
+                      ),
                     )
                   // Add padding to each of the items. And a visible border.
                   : ListView(
