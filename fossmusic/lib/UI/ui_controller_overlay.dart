@@ -15,6 +15,7 @@ class OverlayController extends StatelessWidget {
       children: [
         ElevatedButton(
             onPressed: () {
+              previousSong();
               TinderCard.controller.next(
                   swipeDirection: SwipeDirection.left,
                   duration: const Duration(milliseconds: 750));
@@ -60,6 +61,7 @@ class OverlayController extends StatelessWidget {
             )),
         ElevatedButton(
             onPressed: () {
+              nextSong();
               TinderCard.controller.next(
                   swipeDirection: SwipeDirection.right,
                   duration: const Duration(milliseconds: 750));
