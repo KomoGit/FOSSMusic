@@ -53,16 +53,25 @@ class _PlayListViewState extends State<PlayListView> {
                   : ListView(
                       children: snapshot.data!.map((song) {
                         return Center(
-                          child: ListTile(
-                            title: Text("${song.artistName}-${song.songName}"),
-                            onLongPress: () {
-                              setState(() {
-                                DatabaseHelper.instance.remove(song.id!);
-                              });
-                            },
-                            onTap: () {
-                              startSong(song.link);
-                            },
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: ListTile(
+                              title:
+                                  Text("${song.artistName}-${song.songName}"),
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(
+                                    color: Colors.black, width: 0.5),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              onLongPress: () {
+                                setState(() {
+                                  DatabaseHelper.instance.remove(song.id!);
+                                });
+                              },
+                              onTap: () {
+                                startSong(song.link);
+                              },
+                            ),
                           ),
                         );
                       }).toList(),
