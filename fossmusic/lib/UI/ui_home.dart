@@ -4,6 +4,7 @@ import 'package:fossmusic/UI/ui_controller_overlay.dart';
 import 'package:fossmusic/UI/ui_input.dart';
 import 'package:fossmusic/UI/ui_playlist.dart';
 import 'package:fossmusic/UI/ui_tindercard.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -35,7 +36,11 @@ class _RootPageState extends State<RootPage> {
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
-        title: const Center(child: Text("FOSSPlayer")),
+        title: Center(
+            child: Text(
+          "FOSSPlayer",
+          style: GoogleFonts.bebasNeue(fontSize: 24),
+        )),
       ),
       backgroundColor: Colors.yellow,
       body: const Center(

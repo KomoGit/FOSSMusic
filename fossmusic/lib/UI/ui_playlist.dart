@@ -1,9 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:fossmusic/DB/db_controller.dart';
 import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:fossmusic/LOGIC/logic_player.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 
@@ -18,6 +17,11 @@ class _PlayListViewState extends State<PlayListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text(
+        "Playlist",
+        style: GoogleFonts.bebasNeue(),
+      )),
       body: Center(
         child: FutureBuilder<List<Song>>(
             future: DatabaseHelper.instance.getSongs(),
@@ -28,18 +32,19 @@ class _PlayListViewState extends State<PlayListView> {
                   child: LoadingAnimationWidget.staggeredDotsWave(
                       color: Colors.white, size: 60),
                 );
-                //return const Center(child: Text('Loading...'));
               }
               return snapshot.data!.isEmpty
                   ? Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Lottie.network(
-                              "https://assets4.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"),
-                          const Text(
+                          Lottie.asset("assets/empty-box.json"),
+                          Text(
                             "Your playlist is completely empty.",
-                            style: TextStyle(color: Colors.black),
+                            style: GoogleFonts.bebasNeue(
+                              fontSize: 24,
+                              color: Colors.black,
+                            ),
                           )
                         ],
                       ),
@@ -56,7 +61,7 @@ class _PlayListViewState extends State<PlayListView> {
                               });
                             },
                             onTap: () {
-                              playSong(song.link);
+                              startSong(song.link);
                             },
                           ),
                         );
