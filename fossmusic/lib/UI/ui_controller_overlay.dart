@@ -33,11 +33,9 @@ class OverlayController extends StatelessWidget {
             if (!pausePressed) {
               pausePressed = true;
               pauseSong();
-              //continueSong();
             } else {
               pausePressed = false;
               continueSong();
-              //pauseSong();
             }
           },
           style: ElevatedButton.styleFrom(

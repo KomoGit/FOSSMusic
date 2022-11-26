@@ -1,8 +1,7 @@
-//AudioPlayer audioPlayer = AudioPlayer();
-
 import 'package:assets_audio_player/assets_audio_player.dart';
 
 var _aPlayer = AssetsAudioPlayer.newPlayer();
+int? currentId;
 
 void startSong(String url) {
   _aPlayer.open(Audio.network(url));
@@ -22,4 +21,12 @@ void nextSong() {
 
 void previousSong() {
   _aPlayer.previous();
+}
+
+// void getSongId(int? id) {
+//   currentId = id;
+// }
+
+getAlbumCover() {
+  return _aPlayer.getCurrentAudioImage;
 }

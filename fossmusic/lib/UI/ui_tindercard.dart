@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fossmusic/LOGIC/logic_player.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 
 class TinderCard extends StatelessWidget {
@@ -11,7 +12,10 @@ class TinderCard extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: SwipableStack(
         builder: (context, index) {
-          return Image.asset("assets/WallpaperDog-20521639.jpg"); //REMOVE ME
+          if (getAlbumCover() != null) {
+            return Image.asset(getAlbumCover());
+          }
+          return Image.asset("assets/WallpaperDog-20521641.jpg"); //REMOVE ME
         },
         controller: controller,
         detectableSwipeDirections: const {
