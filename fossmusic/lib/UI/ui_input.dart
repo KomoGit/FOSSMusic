@@ -7,19 +7,20 @@ TextEditingController linkController = TextEditingController();
 TextEditingController albumController = TextEditingController();
 TextEditingController artistController = TextEditingController();
 
-class UserInputPopUp extends StatelessWidget {
+class UserInputPopUp extends StatefulWidget {
   const UserInputPopUp({super.key});
-//DOESNT WORK
+
+  @override
+  State<UserInputPopUp> createState() => _UserInputPopUpState();
+}
+
+class _UserInputPopUpState extends State<UserInputPopUp> {
   @override
   Widget build(BuildContext context) {
-    //TextEditingController nameController = TextEditingController();
-    //List<TextEditingController> nameController = [];
-
     return Scaffold(
       appBar: AppBar(title: const Text("Add New Song")),
       backgroundColor: Colors.yellow,
       body: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Flexible(
             child: Padding(
@@ -65,7 +66,7 @@ class UserInputPopUp extends StatelessWidget {
                       ),
                     );
                   },
-                  child: const Text('Submit'),
+                  child: const Text('Save'),
                 );
               },
             ),
@@ -83,8 +84,7 @@ Widget _userInputField(
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(10),
           labelText: label,
-          // ));
-          errorText: !fieldCheck ? "Value Cannot be empty" : ""));
+          errorText: !fieldCheck ? "Value Cannot be empty" : null));
 }
 
 //This checks whether fields are empty. Right now they only server UI purpose.
