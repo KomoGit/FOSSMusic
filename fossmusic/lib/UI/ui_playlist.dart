@@ -68,7 +68,6 @@ class _PlayListViewState extends State<PlayListView> {
                                 });
                               },
                               onTap: () {
-                                //getSongId(song.id);
                                 startSong(song.link);
                               },
                             ),

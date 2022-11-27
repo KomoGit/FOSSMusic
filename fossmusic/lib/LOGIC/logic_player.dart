@@ -23,10 +23,6 @@ void previousSong() {
   _aPlayer.previous();
 }
 
-// void getSongId(int? id) {
-//   currentId = id;
-// }
-
 getAlbumCover() {
   return _aPlayer.getCurrentAudioImage;
 }
