@@ -35,31 +35,3 @@ class _TinderCardState extends State<TinderCard> {
     );
   }
 }
-
-// class TinderCard extends StatelessWidget {
-//   static final controller = SwipableStackController();
-//   const TinderCard({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       resizeToAvoidBottomInset: false,
-//       backgroundColor: Colors.transparent,
-//       body: SwipableStack(
-//         builder: (context, index) {
-//           if (getAlbumCover() != null) {
-//             return Image.asset(getAlbumCover());
-//           }
-//           return Image.asset("assets/WallpaperDog-20521641.jpg"); //REMOVE ME
-//         },
-//         controller: controller,
-//         detectableSwipeDirections: const {
-//           SwipeDirection.right,
-//           SwipeDirection.left
-//         },
-//         onSwipeCompleted: ((index, direction) {
-//           debugPrint("$index,$direction");
-//         }),
-//       ),
-//     );
-//   }
-// }
