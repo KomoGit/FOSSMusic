@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fossmusic/DB/db_controller.dart';
 import 'package:fossmusic/DB/models/model_song.dart';
+import 'package:fossmusic/LOGIC/logic_input.dart';
 
 TextEditingController nameController = TextEditingController();
 TextEditingController linkController = TextEditingController();
@@ -26,28 +27,28 @@ class _UserInputPopUpState extends State<UserInputPopUp> {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: _userInputField(context, "Insert Song Name",
-                  checkSongNameField(), nameController),
+                  checkSongNameField(nameController), nameController),
             ),
           ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: _userInputField(context, "Insert Artist Name",
-                  checkArtistNameField(), artistController),
+                  checkArtistNameField(artistController), artistController),
             ),
           ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: _userInputField(context, "Insert Album Name",
-                  checkAlbumField(), albumController),
+                  checkAlbumField(albumController), albumController),
             ),
           ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: _userInputField(
-                  context, "Insert Link", checkLinkField(), linkController),
+              child: _userInputField(context, "Insert Link",
+                  checkLinkField(linkController), linkController),
             ),
           ),
           Padding(
@@ -85,34 +86,4 @@ Widget _userInputField(
           contentPadding: const EdgeInsets.all(10),
           labelText: label,
           errorText: !fieldCheck ? "Value Cannot be empty" : null));
-}
-
-//This checks whether fields are empty. Right now they only server UI purpose.
-bool checkLinkField() {
-  if (linkController.text.isEmpty) {
-    return false;
-  }
-  return true;
-}
-
-bool checkArtistNameField() {
-  if (artistController.text.isEmpty) {
-    return false;
-  }
-  return true;
-}
-
-bool checkAlbumField() {
-  if (albumController.text.isEmpty) {
-    return false;
-  }
-  return true;
-}
-
-bool checkSongNameField() {
-  if (nameController.text.isEmpty) {
-    return false;
-  } else {
-    return true;
-  }
 }
