@@ -82,8 +82,10 @@ class _PlayListViewState extends State<PlayListView> {
                                               )),
                                           TextButton(
                                               onPressed: () {
-                                                DatabaseHelper.instance
-                                                    .remove(song.id!);
+                                                setState(() {
+                                                  DatabaseHelper.instance
+                                                      .remove(song.id!);
+                                                });
                                                 Navigator.pop(context);
                                               },
                                               child: const Text(
@@ -95,7 +97,7 @@ class _PlayListViewState extends State<PlayListView> {
                                       );
                                     });
                                 // setState(() {
-                                //   //TODO: Instead of outright deleting what ever is held, best to pop up a notification box and ask.
+                                //
                                 //   DatabaseHelper.instance.remove(song.id!);
                                 // });
                               },
