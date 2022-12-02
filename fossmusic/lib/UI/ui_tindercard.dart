@@ -29,7 +29,7 @@ class _TinderCardState extends State<TinderCard> {
           SwipeDirection.left
         },
         onSwipeCompleted: ((index, direction) {
-          debugPrint("$index,$direction");
+          cardController(direction);
         }),
       ),
     );
