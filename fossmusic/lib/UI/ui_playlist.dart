@@ -40,7 +40,7 @@ class _PlayListViewState extends State<PlayListView> {
                         children: [
                           Lottie.asset("assets/empty-box.json"),
                           Text(
-                            "Your playlist is completely empty.",
+                            "Your playlist is empty.",
                             style: GoogleFonts.bebasNeue(
                               fontSize: 24,
                               color: Colors.black,
@@ -63,9 +63,41 @@ class _PlayListViewState extends State<PlayListView> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               onLongPress: () {
-                                setState(() {
-                                  DatabaseHelper.instance.remove(song.id!);
-                                });
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text("Warning"),
+                                        content: Text(
+                                            "Do you wish to delete ${song.songName}?"),
+                                        actions: <Widget>[
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text(
+                                                "No",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                          TextButton(
+                                              onPressed: () {
+                                                DatabaseHelper.instance
+                                                    .remove(song.id!);
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text(
+                                                "Yes",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                        ],
+                                      );
+                                    });
+                                // setState(() {
+                                //   //TODO: Instead of outright deleting what ever is held, best to pop up a notification box and ask.
+                                //   DatabaseHelper.instance.remove(song.id!);
+                                // });
                               },
                               onTap: () {
                                 startSong(song.link);
