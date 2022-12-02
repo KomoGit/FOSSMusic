@@ -1,10 +1,10 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:swipable_stack/swipable_stack.dart';
 
 var _aPlayer = AssetsAudioPlayer.newPlayer();
-int? currentId;
 
 void startSong(String url) {
-  _aPlayer.open(Audio.network(url));
+  _aPlayer.open(Audio.network(url), showNotification: true);
 }
 
 void continueSong() {
@@ -25,4 +25,17 @@ void previousSong() {
 
 getAlbumCover() {
   return _aPlayer.getCurrentAudioImage;
+}
+
+void cardController(SwipeDirection direction) {
+  switch (direction) {
+    case SwipeDirection.right:
+      nextSong();
+      break;
+    case SwipeDirection.left:
+      previousSong();
+      break;
+    default:
+      break;
+  }
 }
