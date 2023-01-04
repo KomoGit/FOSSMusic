@@ -67,9 +67,10 @@ class _PlayListViewState extends State<PlayListView> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return AlertDialog(
-                                        title: const Text("Warning"),
-                                        content: Text(
-                                            "Do you wish to delete ${song.songName}?"),
+                                        title: Text(
+                                            "Delete ${song.artistName} - ${song.songName}"),
+                                        content: const Text(
+                                            "Do you wish to delete?"),
                                         actions: <Widget>[
                                           TextButton(
                                               onPressed: () {
@@ -96,10 +97,6 @@ class _PlayListViewState extends State<PlayListView> {
                                         ],
                                       );
                                     });
-                                // setState(() {
-                                //
-                                //   DatabaseHelper.instance.remove(song.id!);
-                                // });
                               },
                               onTap: () {
                                 startSong(song.link);
