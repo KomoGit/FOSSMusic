@@ -60,11 +60,11 @@ class _UserInputPopUpState extends State<UserInputPopUp> {
                       Song(
                         songName: _controller[0].text,
                         artistName: _controller[1].text,
-                        link: _controller[2].text, //linkController.text,
-                        albumName: _controller[3].text, //albumController.text,
+                        link: _controller[2].text,
+                        albumName: _controller[3].text,
                       ),
                     );
-                    _controller.clear();
+                    clearControllerFields();
                   },
                   child: const Text('Save'),
                 );
@@ -85,4 +85,10 @@ Widget _userInputField(
           contentPadding: const EdgeInsets.all(10),
           labelText: label,
           errorText: !fieldCheck ? "Value Cannot be empty" : null));
+}
+
+void clearControllerFields() {
+  for (var i = 0; i < _controller.length - 1; i++) {
+    _controller[i].clear();
+  }
 }
