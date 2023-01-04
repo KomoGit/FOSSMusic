@@ -66,6 +66,7 @@ class _UserInputPopUpState extends State<UserInputPopUp> {
                         albumName: albumController.text,
                       ),
                     );
+                    clearFields();
                   },
                   child: const Text('Save'),
                 );
@@ -86,4 +87,11 @@ Widget _userInputField(
           contentPadding: const EdgeInsets.all(10),
           labelText: label,
           errorText: !fieldCheck ? "Value Cannot be empty" : null));
+}
+
+void clearFields() {
+  nameController.clear();
+  artistController.clear();
+  linkController.clear();
+  albumController.clear();
 }
