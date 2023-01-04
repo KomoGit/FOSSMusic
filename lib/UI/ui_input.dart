@@ -3,6 +3,7 @@ import 'package:fossmusic/DB/db_controller.dart';
 import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:fossmusic/LOGIC/logic_input.dart';
 
+//0,1,2,3......Name,Artist,Link,Album
 List<TextEditingController> _controller =
     List.generate(4, (i) => TextEditingController());
 
@@ -16,6 +17,7 @@ class UserInputPopUp extends StatefulWidget {
 class _UserInputPopUpState extends State<UserInputPopUp> {
   @override
   Widget build(BuildContext context) {
+    clearControllerFields(_controller);
     return Scaffold(
       appBar: AppBar(title: const Text("Add New Song")),
       backgroundColor: Colors.yellow,
