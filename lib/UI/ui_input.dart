@@ -3,10 +3,8 @@ import 'package:fossmusic/DB/db_controller.dart';
 import 'package:fossmusic/DB/models/model_song.dart';
 import 'package:fossmusic/LOGIC/logic_input.dart';
 
-TextEditingController nameController = TextEditingController();
-TextEditingController linkController = TextEditingController();
-TextEditingController albumController = TextEditingController();
-TextEditingController artistController = TextEditingController();
+List<TextEditingController> _controller =
+    List.generate(4, (i) => TextEditingController());
 
 class UserInputPopUp extends StatefulWidget {
   const UserInputPopUp({super.key});
@@ -27,28 +25,28 @@ class _UserInputPopUpState extends State<UserInputPopUp> {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: _userInputField(context, "Insert Song Name",
-                  checkSongNameField(nameController), nameController),
+                  checkField(_controller[0]), _controller[0]),
             ),
           ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: _userInputField(context, "Insert Artist Name",
-                  checkArtistNameField(artistController), artistController),
+                  checkField(_controller[1]), _controller[1]),
             ),
           ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: _userInputField(context, "Insert Album Name",
-                  checkAlbumField(albumController), albumController),
+                  checkField(_controller[2]), _controller[2]),
             ),
           ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: _userInputField(context, "Insert Link",
-                  checkLinkField(linkController), linkController),
+                  checkField(_controller[3]), _controller[3]),
             ),
           ),
           Padding(
@@ -60,13 +58,13 @@ class _UserInputPopUpState extends State<UserInputPopUp> {
                     Navigator.pop(context);
                     await DatabaseHelper.instance.add(
                       Song(
-                        songName: nameController.text,
-                        artistName: artistController.text,
-                        link: linkController.text,
-                        albumName: albumController.text,
+                        songName: _controller[0].text,
+                        artistName: _controller[1].text,
+                        link: _controller[2].text, //linkController.text,
+                        albumName: _controller[3].text, //albumController.text,
                       ),
                     );
-                    clearFields();
+                    _controller.clear();
                   },
                   child: const Text('Save'),
                 );
@@ -87,11 +85,4 @@ Widget _userInputField(
           contentPadding: const EdgeInsets.all(10),
           labelText: label,
           errorText: !fieldCheck ? "Value Cannot be empty" : null));
-}
-
-void clearFields() {
-  nameController.clear();
-  artistController.clear();
-  linkController.clear();
-  albumController.clear();
 }
