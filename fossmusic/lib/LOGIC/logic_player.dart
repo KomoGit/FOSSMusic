@@ -23,9 +23,9 @@ void previousSong() {
   _aPlayer.previous();
 }
 
-getAlbumCover() {
-  return _aPlayer.getCurrentAudioImage;
-}
+// MetasImage? getAlbumCover() {
+//   return _aPlayer.getCurrentAudioImage;
+// }
 
 void cardController(SwipeDirection direction) {
   switch (direction) {
