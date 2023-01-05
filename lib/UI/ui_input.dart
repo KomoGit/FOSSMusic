@@ -26,31 +26,39 @@ class _UserInputPopUpState extends State<UserInputPopUp> {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: _userInputField(context, "Insert Song Name",
-                  checkField(_controller[0]), _controller[0]),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  label: Text("Insert Song Name"),
+                ),
+                validator: (value) {
+                  return value!.isEmpty ? "Value Cannot be empty" : null;
+                },
+              ),
+              // child: _userInputField(context, "Insert Song Name",
+              //     checkField(_controller[0]), _controller[0]),
             ),
           ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: _userInputField(context, "Insert Artist Name",
-                  checkField(_controller[1]), _controller[1]),
-            ),
-          ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: _userInputField(context, "Insert Album Name",
-                  checkField(_controller[2]), _controller[2]),
-            ),
-          ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: _userInputField(context, "Insert Link",
-                  checkField(_controller[3]), _controller[3]),
-            ),
-          ),
+          // Flexible(
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(20.0),
+          //     child: _userInputField(context, "Insert Artist Name",
+          //         checkField(_controller[1]), _controller[1]),
+          //   ),
+          // ),
+          // Flexible(
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(20.0),
+          //     child: _userInputField(context, "Insert Album Name",
+          //         checkField(_controller[2]), _controller[2]),
+          //   ),
+          // ),
+          // Flexible(
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(20.0),
+          //     child: _userInputField(context, "Insert Link",
+          //         checkField(_controller[3]), _controller[3]),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Builder(
@@ -79,12 +87,12 @@ class _UserInputPopUpState extends State<UserInputPopUp> {
   }
 }
 
-Widget _userInputField(
-    BuildContext context, String label, bool fieldCheck, controller) {
-  return TextField(
-      onChanged: (v) => controller.text = v,
-      decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(10),
-          labelText: label,
-          errorText: !fieldCheck ? "Value Cannot be empty" : null));
-}
+// Widget _userInputField(
+//     BuildContext context, String label, bool fieldCheck, controller) {
+//   return TextField(
+//       onChanged: (v) => controller.text = v,
+//       decoration: InputDecoration(
+//           contentPadding: const EdgeInsets.all(10),
+//           labelText: label,
+//           errorText: _controller.isNotEmpty ? "Value Cannot be empty" : null));
+// }
