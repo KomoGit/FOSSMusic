@@ -18,9 +18,6 @@ class _TinderCardState extends State<TinderCard> {
       backgroundColor: Colors.transparent,
       body: SwipableStack(
         builder: (context, index) {
-          // if (getAlbumCover() != null) {
-          //   return Image.asset(getAlbumCover().toString());
-          // }
           return Image.asset("assets/WallpaperDog-20521641.jpg"); //REMOVE ME
         },
         controller: TinderCard.controller,
